@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV – Logan Ferreira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg: #050816;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --shadow-soft: 0 18px 40px rgba(15,23,42,.75);
+      --transition-fast: .16s ease-out;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Inter",system-ui,sans-serif;
+      background:radial-gradient(circle at top,#1d293b 0,#020617 55%);
+      color:var(--text);
+    }
+
+    .page{max-width:1120px;margin:0 auto;padding:32px 16px 64px}
+    header{display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;margin-bottom:32px}
+    .brand{display:flex;align-items:center;gap:16px}
+    .avatar{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#38bdf8,#1e293b);border:3px solid rgba(148,163,184,.5)}
+    .brand-text h1{font-size:1.5rem;text-transform:uppercase}
+    .brand-text span{color:var(--muted);font-size:.875rem}
+    nav{display:flex;gap:12px;flex-wrap:wrap}
+    nav a{font-size:.875rem;padding:8px 14px;border-radius:999px;color:var(--muted);transition:all var(--transition-fast)}
+    nav a:hover{color:var(--text);background:rgba(15,23,42,.8)}
+
+    .layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.4fr);gap:24px;margin-bottom:32px}
+    @media(max-width:860px){.layout{grid-template-columns:1fr}}
+    .card{
+      background:linear-gradient(135deg,rgba(248,250,252,.07),rgba(15,23,42,.98)),radial-gradient(circle at top left,rgba(56,189,248,.12),transparent);
+      border:1px solid rgba(148,163,184,.45);
+      border-radius:24px;
+      padding:20px 18px;
+      box-shadow:var(--shadow-soft)
+    }
+    .headline{font-size:1.35rem;font-weight:600;margin-bottom:6px}
+    .subtitle{color:var(--muted);margin-bottom:18px}
+    .keypoints{display:grid;gap:10px;font-size:.9rem}
+    .keypoint{display:flex;align-items:flex-start;gap:8px}
+    .keypoint-bullet{margin-top:6px;width:6px;height:6px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+    .side-card .contact-list{list-style:none;display:grid;gap:8px;font-size:.9rem}
+    .contact-link{display:inline-flex;align-items:center;gap:8px;padding:4px 8px;border-radius:999px;background:rgba(15,23,42,.85);border:1px solid rgba(148,163,184,.5);font-size:.85rem;transition:all var(--transition-fast)}
+    .contact-link:hover{border-color:rgba(56,189,248,.9)}
+
+    .section-title{margin:30px 0 12px;font-size:.95rem;text-transform:uppercase;color:var(--muted)}
+    .section-title strong{color:#e5e7eb}
+
+    /* ==== TIMELINE ==== */
+    .timeline{
+      border:1px solid rgba(148,163,184,.4);
+      border-radius:22px;
+      background:#020617;
+      padding:18px;
+      box-shadow:var(--shadow-soft);
+      overflow:hidden
+    }
+    .timeline-inner{display:flex;flex-direction:column;gap:8px}
+    .timeline-scroll{overflow-x:auto;padding-bottom:8px}
+    .timeline-scroll::-webkit-scrollbar{height:6px}
+    .timeline-scroll::-webkit-scrollbar-thumb{background:rgba(148,163,184,.7);border-radius:999px}
+    .timeline-content{width:max(1400px,100%)}
+    .timeline-scale{display:grid;grid-template-columns:repeat(5,1fr);font-size:.75rem;color:var(--muted);letter-spacing:.14em}
+    .timeline-lanes{display:flex;flex-direction:column;gap:10px;margin-top:2px}
+    .timeline-lane{display:grid;grid-template-columns:160px minmax(0,1fr);gap:10px;align-items:stretch}
+    @media(max-width:720px){.timeline-lane{grid-template-columns:1fr}}
+    .timeline-lane-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);display:flex;align-items:center}
+    .timeline-lane-track{position:relative;height:130px;padding:4px 0}
+    .timeline-axis-line{position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(55,65,81,.9)}
+    .timeline-event{
+      position:absolute;top:50%;transform:translateY(-50%);
+      left:calc((1 - var(--end)) * 100%);
+      width:calc((var(--end) - var(--start)) * 100%);
+      min-width:120px;
+      height:100px;
+      background:rgba(15,23,42,.96);
+      border:1px solid rgba(55,65,81,.9);
+      border-radius:14px;
+      padding:8px 10px;
+      font-size:.8rem;
+      display:flex;flex-direction:column;justify-content:flex-start;
+      transition:all var(--transition-fast)
+    }
+    .timeline-event:hover{transform:translateY(-55%) scale(1.02);border-color:rgba(56,189,248,.8)}
+    .timeline-role{font-weight:500}
+    .timeline-company{font-size:.75rem;color:var(--muted)}
+    .timeline-location{font-size:.72rem;color:#64748b}
+    .timeline-desc{font-size:.75rem;color:#d1d5db;flex:1}
+    .timeline-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+    .timeline-badge{padding:2px 7px;border-radius:999px;border:1px solid rgba(75,85,99,.95);background:rgba(15,23,42,.95);font-size:.7rem;color:#9ca3af}
+    .timeline-badge.primary{border-color:rgba(56,189,248,.9);color:#e0f2fe}
+    @media(max-width:800px){
+      .timeline-scale{display:none}
+      .timeline-content{width:100%}
+      .timeline-lane-track{height:auto;padding:0}
+      .timeline-axis-line{display:none}
+      .timeline-event{position:relative;width:100%;transform:none;margin-bottom:8px;height:auto}
+    }
+
+    /* ==== SKILLS ==== */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:8px}
+    .skills-card{background:rgba(15,23,42,.98);border:1px solid rgba(51,65,85,.9);border-radius:14px;padding:10px 12px;font-size:.85rem}
+    .skills-card h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;color:var(--muted)}
+    .skills-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .skills-tag{padding:3px 8px;border-radius:999px;background:rgba(15,23,42,.95);border:1px solid rgba(75,85,99,.95);font-size:.78rem;color:#e5e7eb}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="avatar"></div>
+        <div class="brand-text">
+          <h1>Logan Ferreira</h1>
+          <span>Développeur • Étudiant • Engagé</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#parcours">Parcours</a>
+        <a href="#competences">Compétences</a>
+      </nav>
+    </header>
+
+    <div class="layout">
+      <section class="card">
+        <h2 class="headline">Développeur & product-minded</h2>
+        <p class="subtitle">Je conçois, développe et pilote des projets numériques tout en gardant un fort ancrage associatif et territorial.</p>
+        <div class="keypoints">
+          <div class="keypoint"><div class="keypoint-bullet"></div><div><strong>Vision globale.</strong> Relier enjeux techniques et besoins utilisateurs.</div></div>
+          <div class="keypoint"><div class="keypoint-bullet"></div><div><strong>Technique.</strong> Web, API, data et automatisation.</div></div>
+          <div class="keypoint"><div class="keypoint-bullet"></div><div><strong>Engagement.</strong> Mandats associatifs et citoyens.</div></div>
+        </div>
+      </section>
+
+      <aside class="card side-card">
+        <h2 class="headline" style="font-size:1.05rem;margin-bottom:8px;">Contact</h2>
+        <ul class="contact-list">
+          <li><span>Email</span><br><a class="contact-link" href="mailto:logan.ferreira@mail.com">logan.ferreira@mail.com</a></li>
+          <li><span>LinkedIn</span><br><a class="contact-link" href="#">linkedin.com/in/logan-ferreira</a></li>
+          <li><span>GitHub</span><br><a class="contact-link" href="#">github.com/logan-ferreira</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <h2 class="section-title" id="parcours"><strong>Parcours</strong> — formation, professionnel, associatif & citoyen</h2>
+
+    <section class="timeline">
+      <div class="timeline-inner">
+        <div class="timeline-scroll">
+          <div class="timeline-content">
+            <div class="timeline-scale"><span>2025</span><span>2024</span><span>2023</span><span>2022</span><span>2021</span></div>
+            <div class="timeline-lanes">
+
+              <!-- Formation -->
+              <div class="timeline-lane">
+                <div class="timeline-lane-label">Formation</div>
+                <div class="timeline-lane-track">
+                  <div class="timeline-axis-line"></div>
+                  <article class="timeline-event" style="--start:0;--end:0.75;">
+                    <div class="timeline-role">BUT Informatique</div>
+                    <div class="timeline-company">IUT du Limousin</div>
+                    <div class="timeline-location">2021–2024</div>
+                    <p class="timeline-desc">Formation en développement, systèmes d’information et gestion de projet.</p>
+                  </article>
+                  <article class="timeline-event" style="--start:0.75;--end:1;">
+                    <div class="timeline-role">3iL Ingénieurs</div>
+                    <div class="timeline-company">Cycle ingénieur</div>
+                    <div class="timeline-location">2024–2025</div>
+                    <p class="timeline-desc">Approfondissement en ingénierie logicielle et architecture.</p>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Professionnel -->
+              <div class="timeline-lane">
+                <div class="timeline-lane-label">Professionnel</div>
+                <div class="timeline-lane-track">
+                  <div class="timeline-axis-line"></div>
+                  <article class="timeline-event" style="--start:0.75;--end:1;">
+                    <div class="timeline-role">Projets web & automatisation</div>
+                    <div class="timeline-company">Freelance</div>
+                    <div class="timeline-location">2024–2025</div>
+                    <p class="timeline-desc">Développement de sites et scripts pour automatiser des tâches et superviser des systèmes.</p>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Associatif -->
+              <div class="timeline-lane">
+                <div class="timeline-lane-label">Associatif</div>
+                <div class="timeline-lane-track">
+                  <div class="timeline-axis-line"></div>
+                  <article class="timeline-event" style="--start:0.25;--end:0.5;">
+                    <div class="timeline-role">Membre BDE / ŒIL</div>
+                    <div class="timeline-company">IUT Limoges</div>
+                    <div class="timeline-location">2022–2023</div>
+                    <p class="timeline-desc">Organisation d’événements et animation de la vie étudiante.</p>
+                  </article>
+                  <article class="timeline-event" style="--start:0.75;--end:1;">
+                    <div class="timeline-role">Membre</div>
+                    <div class="timeline-company">Fédération LEA</div>
+                    <div class="timeline-location">2024–2025</div>
+                    <p class="timeline-desc">Coordination et représentation des associations étudiantes.</p>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Citoyen -->
+              <div class="timeline-lane">
+                <div class="timeline-lane-label">Citoyen</div>
+                <div class="timeline-lane-track">
+                  <div class="timeline-axis-line"></div>
+                  <article class="timeline-event" style="--start:0.5;--end:1;">
+                    <div class="timeline-role">Membre CRJ</div>
+                    <div class="timeline-company">Conseil Régional des Jeunes</div>
+                    <div class="timeline-location">2023–2025</div>
+                    <p class="timeline-desc">Projets européens et engagement jeunesse régionale.</p>
+                  </article>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="competences"><strong>Compétences</strong></h2>
+    <section class="skills-grid">
+      <div class="skills-card"><h3>Développement</h3><div class="skills-tags"><span class="skills-tag">Node.js</span><span class="skills-tag">PHP</span><span class="skills-tag">Python</span></div></div>
+      <div class="skills-card"><h3>Data</h3><div class="skills-tags"><span class="skills-tag">SQL</span><span class="skills-tag">Automatisation</span></div></div>
+      <div class="skills-card"><h3>Gestion</h3><div class="skills-tags"><span class="skills-tag">Agilité</span><span class="skills-tag">Organisation</span></div></div>
+    </section>
+  </div>
+</body>
+</html>
