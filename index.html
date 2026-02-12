@@ -1,247 +1,363 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>CV – Logan Ferreira</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logan FERREIRA | Portfolio Immersif</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --bg: #050816;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56,189,248,0.15);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --shadow-soft: 0 18px 40px rgba(15,23,42,.75);
-      --transition-fast: .16s ease-out;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap');
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      transition: background-color 0.8s ease, color 0.8s ease;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:"Inter",system-ui,sans-serif;
-      background:radial-gradient(circle at top,#1d293b 0,#020617 55%);
-      color:var(--text);
+    /* Thèmes dynamiques */
+    body.theme-pro { background-color: #0f172a; color: #f1f5f9; }
+    body.theme-formation { background-color: #064e3b; color: #ecfdf5; }
+    body.theme-asso { background-color: #4c1d95; color: #f5f3ff; }
+    body.theme-citoyen { background-color: #7f1d1d; color: #fef2f2; }
+    body.theme-events { background-color: #1e293b; color: #f8fafc; }
+
+    .card-glass, .timeline-content {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+    }
+    .card-glass:hover, .timeline-content:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.06); }
+
+    .timeline-line { position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; z-index: 0; opacity: 0.2; }
+
+    .pin {
+      position: absolute;
+      width: 14px; height: 14px;
+      background-color: #3b82f6;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+      animation: pulse-pin 2s infinite;
+    }
+    @keyframes pulse-pin {
+      0% { transform: scale(1); box-shadow: 0 0 0 0px rgba(59, 130, 246, 0.7); }
+      70% { transform: scale(1.3); box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0px rgba(59, 130, 246, 0); }
     }
 
-    .page{max-width:1120px;margin:0 auto;padding:32px 16px 64px}
-    header{display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;margin-bottom:32px}
-    .brand{display:flex;align-items:center;gap:16px}
-    .avatar{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#38bdf8,#1e293b);border:3px solid rgba(148,163,184,.5)}
-    .brand-text h1{font-size:1.5rem;text-transform:uppercase}
-    .brand-text span{color:var(--muted);font-size:.875rem}
-    nav{display:flex;gap:12px;flex-wrap:wrap}
-    nav a{font-size:.875rem;padding:8px 14px;border-radius:999px;color:var(--muted);transition:all var(--transition-fast)}
-    nav a:hover{color:var(--text);background:rgba(15,23,42,.8)}
-
-    .layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.4fr);gap:24px;margin-bottom:32px}
-    @media(max-width:860px){.layout{grid-template-columns:1fr}}
-    .card{
-      background:linear-gradient(135deg,rgba(248,250,252,.07),rgba(15,23,42,.98)),radial-gradient(circle at top left,rgba(56,189,248,.12),transparent);
-      border:1px solid rgba(148,163,184,.45);
-      border-radius:24px;
-      padding:20px 18px;
-      box-shadow:var(--shadow-soft)
-    }
-    .headline{font-size:1.35rem;font-weight:600;margin-bottom:6px}
-    .subtitle{color:var(--muted);margin-bottom:18px}
-    .keypoints{display:grid;gap:10px;font-size:.9rem}
-    .keypoint{display:flex;align-items:flex-start;gap:8px}
-    .keypoint-bullet{margin-top:6px;width:6px;height:6px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-    .side-card .contact-list{list-style:none;display:grid;gap:8px;font-size:.9rem}
-    .contact-link{display:inline-flex;align-items:center;gap:8px;padding:4px 8px;border-radius:999px;background:rgba(15,23,42,.85);border:1px solid rgba(148,163,184,.5);font-size:.85rem;transition:all var(--transition-fast)}
-    .contact-link:hover{border-color:rgba(56,189,248,.9)}
-
-    .section-title{margin:30px 0 12px;font-size:.95rem;text-transform:uppercase;color:var(--muted)}
-    .section-title strong{color:#e5e7eb}
-
-    /* ==== TIMELINE ==== */
-    .timeline{
-      border:1px solid rgba(148,163,184,.4);
-      border-radius:22px;
-      background:#020617;
-      padding:18px;
-      box-shadow:var(--shadow-soft);
-      overflow:hidden
-    }
-    .timeline-inner{display:flex;flex-direction:column;gap:8px}
-    .timeline-scroll{overflow-x:auto;padding-bottom:8px}
-    .timeline-scroll::-webkit-scrollbar{height:6px}
-    .timeline-scroll::-webkit-scrollbar-thumb{background:rgba(148,163,184,.7);border-radius:999px}
-    .timeline-content{width:max(1400px,100%)}
-    .timeline-scale{display:grid;grid-template-columns:repeat(5,1fr);font-size:.75rem;color:var(--muted);letter-spacing:.14em}
-    .timeline-lanes{display:flex;flex-direction:column;gap:10px;margin-top:2px}
-    .timeline-lane{display:grid;grid-template-columns:160px minmax(0,1fr);gap:10px;align-items:stretch}
-    @media(max-width:720px){.timeline-lane{grid-template-columns:1fr}}
-    .timeline-lane-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);display:flex;align-items:center}
-    .timeline-lane-track{position:relative;height:130px;padding:4px 0}
-    .timeline-axis-line{position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(55,65,81,.9)}
-    .timeline-event{
-      position:absolute;top:50%;transform:translateY(-50%);
-      left:calc((1 - var(--end)) * 100%);
-      width:calc((var(--end) - var(--start)) * 100%);
-      min-width:120px;
-      height:100px;
-      background:rgba(15,23,42,.96);
-      border:1px solid rgba(55,65,81,.9);
-      border-radius:14px;
-      padding:8px 10px;
-      font-size:.8rem;
-      display:flex;flex-direction:column;justify-content:flex-start;
-      transition:all var(--transition-fast)
-    }
-    .timeline-event:hover{transform:translateY(-55%) scale(1.02);border-color:rgba(56,189,248,.8)}
-    .timeline-role{font-weight:500}
-    .timeline-company{font-size:.75rem;color:var(--muted)}
-    .timeline-location{font-size:.72rem;color:#64748b}
-    .timeline-desc{font-size:.75rem;color:#d1d5db;flex:1}
-    .timeline-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
-    .timeline-badge{padding:2px 7px;border-radius:999px;border:1px solid rgba(75,85,99,.95);background:rgba(15,23,42,.95);font-size:.7rem;color:#9ca3af}
-    .timeline-badge.primary{border-color:rgba(56,189,248,.9);color:#e0f2fe}
-    @media(max-width:800px){
-      .timeline-scale{display:none}
-      .timeline-content{width:100%}
-      .timeline-lane-track{height:auto;padding:0}
-      .timeline-axis-line{display:none}
-      .timeline-event{position:relative;width:100%;transform:none;margin-bottom:8px;height:auto}
+    .bio-photo {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* ==== SKILLS ==== */
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:8px}
-    .skills-card{background:rgba(15,23,42,.98);border:1px solid rgba(51,65,85,.9);border-radius:14px;padding:10px 12px;font-size:.85rem}
-    .skills-card h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;color:var(--muted)}
-    .skills-tags{display:flex;flex-wrap:wrap;gap:6px}
-    .skills-tag{padding:3px 8px;border-radius:999px;background:rgba(15,23,42,.95);border:1px solid rgba(75,85,99,.95);font-size:.78rem;color:#e5e7eb}
+    @media (max-width: 768px) {
+      .timeline-line { left: 20px; }
+      .timeline-item { flex-direction: column !important; align-items: flex-start !important; padding-left: 45px; position: relative; }
+      .timeline-content { width: 100% !important; border-left-width: 4px !important; border-right-width: 0 !important; text-align: left !important; }
+      .timeline-content * { text-align: left !important; }
+    }
   </style>
 </head>
+<body class="bg-slate-950 text-slate-100 font-sans theme-pro">
 
-<body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="avatar"></div>
-        <div class="brand-text">
-          <h1>Logan Ferreira</h1>
-          <span>Développeur • Étudiant • Engagé</span>
+<header class="h-screen w-full flex flex-col justify-center items-center text-center p-6 relative overflow-hidden">
+  <div class="z-10" data-aos="fade-up" data-aos-duration="1500">
+    <h1 class="text-6xl md:text-9xl font-black tracking-tighter mb-4 uppercase text-white">LOGAN FERREIRA</h1>
+    <p class="text-lg md:text-2xl text-blue-400 font-light tracking-[0.4em] uppercase">Apprenti ingénieur informatique</p>
+  </div>
+  <div class="absolute bottom-10 animate-bounce"><i class="fas fa-chevron-down opacity-30 text-2xl"></i></div>
+</header>
+
+<nav class="sticky top-0 z-50 backdrop-blur-lg border-b border-white/10 py-4 shadow-2xl">
+  <div class="flex justify-center gap-4 md:gap-8 text-[8px] md:text-[10px] font-black uppercase tracking-widest px-2 text-center">
+    <a href="#bio" class="hover:text-blue-400 transition">Bio</a>
+    <a href="#pro" class="hover:text-blue-400 transition">Pro</a>
+    <a href="#formation" class="hover:text-emerald-400 transition">Etudes</a>
+    <a href="#asso" class="hover:text-purple-400 transition">Asso</a>
+    <a href="#citoyen" class="hover:text-red-400 transition">Engagement</a>
+    <a href="#realisations" class="hover:text-slate-400 transition text-pretty">Projets</a>
+    <a href="#events" class="hover:text-slate-400 transition">Concours</a>
+    <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4">
+
+  <section id="bio" class="pt-40 pb-20 scroll-section" data-theme="theme-pro">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right">
+        <h2 class="text-5xl font-black mb-8 italic tracking-tighter uppercase">Technique & Engagement.</h2>
+        <p class="text-xl leading-relaxed opacity-70 mb-6">
+          Actuellement en cycle ingénieur chez <span class="text-blue-400 font-bold">3iL</span>, mon parcours est une fusion entre informatique et engagement.
+        </p>
+        <p class="text-lg leading-relaxed opacity-60 italic">
+          De l'optimisation des procédés chez <span class="text-blue-300 font-bold">Legrand Groupe</span> au mandat de Conseiller Régional Jeune, je cultive une vision globale de l'innovation.
+        </p>
+      </div>
+      <div data-aos="fade-left">
+        <img src="img/logan.jpg" alt="Logan FERREIRA" class="bio-photo shadow-2xl">
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-40 scroll-section" data-theme="theme-pro">
+    <div class="grid md:grid-cols-2 gap-16 items-center bg-white/5 p-12 rounded-[3rem] border border-white/10" data-aos="fade-up">
+      <div>
+        <h3 class="text-3xl font-black mb-6 uppercase tracking-tight italic">En ce moment.</h3>
+        <ul class="space-y-4 text-slate-300">
+          <li><span class="text-blue-400 font-bold">Legrand Groupe :</span> Chargé de projet informatique performance groupe.</li>
+          <li><span class="text-blue-400 font-bold">Région Nouvelle-Aquitaine :</span> Mandat de représentant citoyen au Conseil Régional Jeune.</li>
+          <li><span class="text-blue-400 font-bold">3iL Ingénieurs :</span> Étudiant en cycle ingénieur en apprentissage.</li>
+        </ul>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] mb-8 opacity-40 italic">Localisation : Limoges, FR</p>
+        <div class="relative w-full max-w-[200px] aspect-square flex items-center justify-center">
+          <svg viewBox="0 0 100 100" class="w-full h-full opacity-20 fill-none stroke-slate-400 stroke-[0.5]"><polygon points="50,1 93.3,25 93.3,75 50,99 6.7,75 6.7,25" /></svg>
+          <div class="pin"></div>
+          <div class="absolute mt-16 text-[10px] font-black text-blue-400 tracking-widest uppercase">Limoges</div>
         </div>
       </div>
-      <nav>
-        <a href="#parcours">Parcours</a>
-        <a href="#competences">Compétences</a>
-      </nav>
-    </header>
+    </div>
+  </section>
 
-    <div class="layout">
-      <section class="card">
-        <h2 class="headline">Développeur & product-minded</h2>
-        <p class="subtitle">Je conçois, développe et pilote des projets numériques tout en gardant un fort ancrage associatif et territorial.</p>
-        <div class="keypoints">
-          <div class="keypoint"><div class="keypoint-bullet"></div><div><strong>Vision globale.</strong> Relier enjeux techniques et besoins utilisateurs.</div></div>
-          <div class="keypoint"><div class="keypoint-bullet"></div><div><strong>Technique.</strong> Web, API, data et automatisation.</div></div>
-          <div class="keypoint"><div class="keypoint-bullet"></div><div><strong>Engagement.</strong> Mandats associatifs et citoyens.</div></div>
-        </div>
-      </section>
+  <section id="pro" class="relative mb-60 scroll-section" data-theme="theme-pro">
+    <h2 class="text-4xl font-black text-center mb-32 text-blue-400 uppercase tracking-widest" data-aos="fade-up">Expériences Professionnelles.</h2>
+    <div class="timeline-line bg-blue-500"></div>
 
-      <aside class="card side-card">
-        <h2 class="headline" style="font-size:1.05rem;margin-bottom:8px;">Contact</h2>
-        <ul class="contact-list">
-          <li><span>Email</span><br><a class="contact-link" href="mailto:logan.ferreira@mail.com">logan.ferreira@mail.com</a></li>
-          <li><span>LinkedIn</span><br><a class="contact-link" href="#">linkedin.com/in/logan-ferreira</a></li>
-          <li><span>GitHub</span><br><a class="contact-link" href="#">github.com/logan-ferreira</a></li>
-        </ul>
-      </aside>
+    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-blue-400/30 italic">2025 - 2028</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-blue-500 text-right">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Chargé de projet informatique performance groupe</h3>
+        <p class="text-blue-400 font-semibold text-lg mb-2">Alternance | Legrand Groupe</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">France</p>
+        <p class="text-sm opacity-70 mt-4 italic">Audit et délégation de portefeuille d'actif logiciel.</p>
+      </div>
     </div>
 
-    <h2 class="section-title" id="parcours"><strong>Parcours</strong> — formation, professionnel, associatif & citoyen</h2>
+    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-blue-400/30 italic">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-blue-500 text-left">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Concepteur développeur informatique industriel</h3>
+        <p class="text-blue-400 font-semibold text-lg mb-2">Alternance | Legrand France</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">France</p>
+        <p class="text-sm opacity-70 mt-4 italic">Développement de solutions d'audit et de gestion de base documentaire.</p>
+      </div>
+    </div>
 
-    <section class="timeline">
-      <div class="timeline-inner">
-        <div class="timeline-scroll">
-          <div class="timeline-content">
-            <div class="timeline-scale"><span>2025</span><span>2024</span><span>2023</span><span>2022</span><span>2021</span></div>
-            <div class="timeline-lanes">
+    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-blue-400/30 italic">2024</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-blue-500 text-right">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Chargé de projet informatique bio médicale</h3>
+        <p class="text-blue-400 font-semibold text-lg mb-2">Stage | CSSR Médipole</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Nouvelle Calédonie</p>
+        <p class="text-sm opacity-70 mt-4 italic">Analyse et gestion des dépendances informatiques hospitaliers.</p>
+      </div>
+    </div>
+  </section>
 
-              <!-- Formation -->
-              <div class="timeline-lane">
-                <div class="timeline-lane-label">Formation</div>
-                <div class="timeline-lane-track">
-                  <div class="timeline-axis-line"></div>
-                  <article class="timeline-event" style="--start:0;--end:0.75;">
-                    <div class="timeline-role">BUT Informatique</div>
-                    <div class="timeline-company">IUT du Limousin</div>
-                    <div class="timeline-location">2021–2024</div>
-                    <p class="timeline-desc">Formation en développement, systèmes d’information et gestion de projet.</p>
-                  </article>
-                  <article class="timeline-event" style="--start:0.75;--end:1;">
-                    <div class="timeline-role">3iL Ingénieurs</div>
-                    <div class="timeline-company">Cycle ingénieur</div>
-                    <div class="timeline-location">2024–2025</div>
-                    <p class="timeline-desc">Approfondissement en ingénierie logicielle et architecture.</p>
-                  </article>
-                </div>
-              </div>
+  <section id="formation" class="relative mb-60 scroll-section" data-theme="theme-formation">
+    <h2 class="text-4xl font-black text-center mb-32 text-emerald-400 uppercase tracking-widest" data-aos="fade-up">Parcours Académique.</h2>
+    <div class="timeline-line bg-emerald-500"></div>
 
-              <!-- Professionnel -->
-              <div class="timeline-lane">
-                <div class="timeline-lane-label">Professionnel</div>
-                <div class="timeline-lane-track">
-                  <div class="timeline-axis-line"></div>
-                  <article class="timeline-event" style="--start:0.75;--end:1;">
-                    <div class="timeline-role">Projets web & automatisation</div>
-                    <div class="timeline-company">Freelance</div>
-                    <div class="timeline-location">2024–2025</div>
-                    <p class="timeline-desc">Développement de sites et scripts pour automatiser des tâches et superviser des systèmes.</p>
-                  </article>
-                </div>
-              </div>
+    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2025 - 2028</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-emerald-500 text-left">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Diplôme d'Ingénieur Informatique</h3>
+        <p class="text-emerald-400 font-semibold text-lg mb-2">Génie Logiciel & Management SI</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">3iL Ingénieurs, Limoges</p>
+      </div>
+    </div>
 
-              <!-- Associatif -->
-              <div class="timeline-lane">
-                <div class="timeline-lane-label">Associatif</div>
-                <div class="timeline-lane-track">
-                  <div class="timeline-axis-line"></div>
-                  <article class="timeline-event" style="--start:0.25;--end:0.5;">
-                    <div class="timeline-role">Membre BDE / ŒIL</div>
-                    <div class="timeline-company">IUT Limoges</div>
-                    <div class="timeline-location">2022–2023</div>
-                    <p class="timeline-desc">Organisation d’événements et animation de la vie étudiante.</p>
-                  </article>
-                  <article class="timeline-event" style="--start:0.75;--end:1;">
-                    <div class="timeline-role">Membre</div>
-                    <div class="timeline-company">Fédération LEA</div>
-                    <div class="timeline-location">2024–2025</div>
-                    <p class="timeline-desc">Coordination et représentation des associations étudiantes.</p>
-                  </article>
-                </div>
-              </div>
+    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-emerald-500 text-right">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Bachelor Universitaire de Technologie</h3>
+        <p class="text-emerald-400 font-semibold text-lg mb-2">Informatique applicative</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Université de Limoges</p>
+      </div>
+    </div>
 
-              <!-- Citoyen -->
-              <div class="timeline-lane">
-                <div class="timeline-lane-label">Citoyen</div>
-                <div class="timeline-lane-track">
-                  <div class="timeline-axis-line"></div>
-                  <article class="timeline-event" style="--start:0.5;--end:1;">
-                    <div class="timeline-role">Membre CRJ</div>
-                    <div class="timeline-company">Conseil Régional des Jeunes</div>
-                    <div class="timeline-location">2023–2025</div>
-                    <p class="timeline-desc">Projets européens et engagement jeunesse régionale.</p>
-                  </article>
-                </div>
-              </div>
+    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2022 - 2024</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-emerald-500 text-left">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Diplôme Universitaire de Technologie</h3>
+        <p class="text-emerald-400 font-semibold text-lg mb-2">Informatique générale</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Université de Limoges</p>
+      </div>
+    </div>
 
-            </div>
-          </div>
+    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2019 - 2022</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-emerald-500 text-right">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Baccalauréat Général</h3>
+        <p class="text-emerald-400 font-semibold text-lg mb-2">Mathématiques & NSI</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Lycée Turgot, Limoges</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="asso" class="relative mb-60 scroll-section" data-theme="theme-asso">
+    <h2 class="text-4xl font-black text-center mb-32 text-purple-400 uppercase tracking-widest" data-aos="fade-up">Vie Associative.</h2>
+    <div class="timeline-line bg-purple-500"></div>
+
+    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-purple-400/30 italic">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-purple-500 text-left">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Président</h3>
+        <p class="text-purple-400 font-semibold text-lg mb-2 italic">Fédération des Associations Étudiantes du Limousin (LEA)</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+      </div>
+    </div>
+
+    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-purple-400/30 italic">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-purple-500 text-right">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Conseiller Spécial</h3>
+        <p class="text-purple-400 font-semibold text-lg mb-2 italic">OEIL Informatique</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+      </div>
+    </div>
+
+    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-purple-400/30 italic">2023 - 2024</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-purple-500 text-left">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Président</h3>
+        <p class="text-purple-400 font-semibold text-lg mb-2 italic">OEIL Informatique</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="citoyen" class="relative mb-60 scroll-section" data-theme="theme-citoyen">
+    <h2 class="text-4xl font-black text-center mb-32 text-red-400 uppercase tracking-widest" data-aos="fade-up">Engagement Citoyen.</h2>
+    <div class="timeline-line bg-red-500"></div>
+
+    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-red-400/30 italic">2025 - 2028</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-red-500 rounded-full absolute left-1/2 -ml-2"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-red-500 text-right">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Représentant Étudiant (CA)</h3>
+        <p class="text-red-400 font-semibold text-lg mb-2 italic">3iL Ingénieurs</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+      </div>
+    </div>
+
+    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-red-400/30 italic">2024 - 2027</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-red-500 rounded-full absolute left-1/2 -ml-2 shadow-[0_0_20px_rgba(239,68,68,0.5)]"></div>
+      <div class="timeline-content w-full md:w-6/12 border-l-8 border-red-600 bg-red-600/10 text-left">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Conseiller Régional Jeune</h3>
+        <p class="text-red-400 font-semibold text-lg mb-2 italic">Région Nouvelle-Aquitaine</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Bordeaux / Limoges</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisations" class="py-40 scroll-section" data-theme="theme-events">
+    <h2 class="text-5xl font-black text-center mb-24 uppercase italic tracking-tighter">Réalisations.</h2>
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="card-glass h-full" data-aos="fade-up">
+        <h3 class="text-3xl font-black mb-2 text-blue-400 uppercase tracking-tighter">Project Solid</h3>
+        <p class="text-lg font-semibold mb-4 italic opacity-80">Jeu vidéo 3D - Unity / C#</p>
+        <p class="opacity-70 leading-relaxed italic">Exploration interactive de l'histoire de l'informatique à travers la science-fiction et des énigmes complexes.</p>
+      </div>
+      <div class="card-glass h-full" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-3xl font-black mb-2 text-emerald-400 uppercase tracking-tighter">Portfolio</h3>
+        <p class="text-lg font-semibold mb-4 italic opacity-80">Storytelling Digital - HTML/Tailwind/JS</p>
+        <p class="opacity-70 leading-relaxed italic">Conception d'une interface immersive pilotée par les événements, utilisant Intersection Observer pour une expérience utilisateur fluide.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="py-40 scroll-section" data-theme="theme-events">
+    <h2 class="text-4xl font-black text-center mb-24 uppercase tracking-widest">Concours.</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card-glass flex flex-col" data-aos="zoom-in">
+        <h4 class="text-xl font-black text-purple-400 mb-1 uppercase tracking-tighter">Nuit de l'Info</h4>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">DÉCEMBRE 2025</p>
+        <p class="text-sm opacity-70 italic mb-6 flex-grow">Chef d'équipe - Développement web intensif en 24h.</p>
+        <div class="pt-4 border-t border-white/10">
+          <p class="text-[10px] font-black uppercase text-purple-300">Résultat</p>
+          <p class="font-bold text-sm uppercase">Non classé</p>
         </div>
       </div>
-    </section>
+      <div class="card-glass flex flex-col" data-aos="zoom-in" data-aos-delay="100">
+        <h4 class="text-xl font-black text-blue-400 mb-1 uppercase tracking-tighter">Global Game Jam</h4>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">JANVIER 2024</p>
+        <p class="text-sm opacity-70 italic mb-6 flex-grow">Développeur - Création de jeu vidéo original en 48h.</p>
+        <div class="pt-4 border-t border-white/10">
+          <p class="text-[10px] font-black uppercase text-blue-300">Résultat</p>
+          <p class="font-bold text-sm uppercase">2nde Place</p>
+        </div>
+      </div>
+      <div class="card-glass flex flex-col" data-aos="zoom-in" data-aos-delay="200">
+        <h4 class="text-xl font-black text-emerald-400 mb-1 uppercase tracking-tighter">Nuit de l'Info</h4>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">DÉCEMBRE 2023</p>
+        <p class="text-sm opacity-70 italic mb-6 flex-grow">Développeur - Challenge technique national.</p>
+        <div class="pt-4 border-t border-white/10">
+          <p class="text-[10px] font-black uppercase text-emerald-300">Résultat</p>
+          <p class="font-bold text-sm uppercase">Non classé</p>
+        </div>
+      </div>
+      <div class="card-glass flex flex-col" data-aos="zoom-in" data-aos-delay="300">
+        <h4 class="text-xl font-black text-red-400 mb-1 uppercase tracking-tighter">Éloquence</h4>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">MARS 2023</p>
+        <p class="text-sm opacity-70 italic mb-6 flex-grow">Participant - Joute verbale et rhétorique devant jury.</p>
+        <div class="pt-4 border-t border-white/10">
+          <p class="text-[10px] font-black uppercase text-red-300">Résultat</p>
+          <p class="font-bold text-sm uppercase">2nde Place</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2 class="section-title" id="competences"><strong>Compétences</strong></h2>
-    <section class="skills-grid">
-      <div class="skills-card"><h3>Développement</h3><div class="skills-tags"><span class="skills-tag">Node.js</span><span class="skills-tag">PHP</span><span class="skills-tag">Python</span></div></div>
-      <div class="skills-card"><h3>Data</h3><div class="skills-tags"><span class="skills-tag">SQL</span><span class="skills-tag">Automatisation</span></div></div>
-      <div class="skills-card"><h3>Gestion</h3><div class="skills-tags"><span class="skills-tag">Agilité</span><span class="skills-tag">Organisation</span></div></div>
-    </section>
-  </div>
+  <section id="contact" class="py-40 scroll-section" data-theme="theme-pro">
+    <h2 class="text-5xl font-black text-center mb-16 uppercase tracking-widest italic">Contact.</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <a href="https://www.linkedin.com/in/logan-ferreira/" target="_blank" class="card-glass text-center group"><i class="fab fa-linkedin text-5xl mb-6 text-blue-400 transition group-hover:scale-110"></i><h4 class="text-2xl font-black uppercase">LinkedIn</h4></a>
+      <a href="https://github.com/LoganFerreira" target="_blank" class="card-glass text-center group"><i class="fab fa-github text-5xl mb-6 text-slate-100 transition group-hover:scale-110"></i><h4 class="text-2xl font-black uppercase">GitHub</h4></a>
+      <a href="https://logan-ferreira.com/" target="_blank" class="card-glass text-center group"><i class="fas fa-globe text-5xl mb-6 text-emerald-400 transition group-hover:scale-110"></i><h4 class="text-2xl font-black uppercase">Site Web</h4></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="py-16 text-center opacity-20 border-t border-white/5 uppercase font-bold text-[10px] tracking-[0.5em]">Limoges &bull; Logan Ferreira &bull; 2026</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: false });
+
+  const sections = document.querySelectorAll('.scroll-section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.body.classList.remove('theme-pro', 'theme-formation', 'theme-asso', 'theme-citoyen', 'theme-events');
+        document.body.classList.add(entry.target.getAttribute('data-theme'));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
 </body>
 </html>
