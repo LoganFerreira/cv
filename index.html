@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logan FERREIRA | Portfolio Immersif</title>
+  <title>Logan FERREIRA</title>
+  <link rel="icon" href="img/Logo_LoganFERREIRA.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +22,7 @@
     body.theme-pro { background-color: #0f172a; color: #f1f5f9; }
     body.theme-formation { background-color: #064e3b; color: #ecfdf5; }
     body.theme-asso { background-color: #4c1d95; color: #f5f3ff; }
-    body.theme-citoyen { background-color: #7f1d1d; color: #fef2f2; }
+    body.theme-citoyen { background-color: #4a1f2b; color: #fff1f2; }
     body.theme-events { background-color: #1e293b; color: #f8fafc; }
 
     .card-glass, .timeline-content {
@@ -58,11 +59,61 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .bio-reveal-section {
+      min-height: 145vh;
+    }
+
+    .bio-reveal-card {
+      overflow: hidden;
+      max-height: 9rem;
+      opacity: 0.58;
+      transform: translateY(24px) scale(0.975);
+      transition:
+        max-height 0.75s cubic-bezier(.22, 1, .36, 1),
+        opacity 0.6s ease,
+        transform 0.75s cubic-bezier(.22, 1, .36, 1),
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+
+    .bio-reveal-card.is-open {
+      max-height: 22rem;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      box-shadow: 0 30px 70px rgba(2, 6, 23, 0.22);
+    }
+
+    .bio-reveal-body {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      overflow: hidden;
+      transition: max-height 0.7s cubic-bezier(.22, 1, .36, 1), opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .bio-reveal-card.is-open .bio-reveal-body {
+      max-height: 10rem;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bio-reveal-kicker {
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      font-weight: 900;
+      opacity: 0.9;
+    }
+
     @media (max-width: 768px) {
       .timeline-line { left: 20px; }
       .timeline-item { flex-direction: column !important; align-items: flex-start !important; padding-left: 45px; position: relative; }
       .timeline-content { width: 100% !important; border-left-width: 4px !important; border-right-width: 0 !important; text-align: left !important; }
       .timeline-content * { text-align: left !important; }
+      .bio-reveal-section { min-height: auto; }
+      .bio-reveal-card { max-height: none; opacity: 1; transform: none; }
+      .bio-reveal-body { max-height: none; opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -77,14 +128,63 @@
 </header>
 
 <nav class="sticky top-0 z-50 backdrop-blur-lg border-b border-white/10 py-4 shadow-2xl">
+  <div class="flex items-center justify-between px-4 mb-4 md:mb-0">
+    <a href="#bio" class="flex items-center">
+      <img src="img/Logo_LoganFERREIRA_Blanc.png" alt="Logo Logan FERREIRA" class="h-12 md:h-14 hover:opacity-80 transition">
+    </a>
+  </div>
   <div class="flex justify-center gap-4 md:gap-8 text-[8px] md:text-[10px] font-black uppercase tracking-widest px-2 text-center">
     <a href="#bio" class="hover:text-blue-400 transition">Bio</a>
-    <a href="#pro" class="hover:text-blue-400 transition">Pro</a>
-    <a href="#formation" class="hover:text-emerald-400 transition">Etudes</a>
-    <a href="#asso" class="hover:text-purple-400 transition">Asso</a>
-    <a href="#citoyen" class="hover:text-red-400 transition">Engagement</a>
-    <a href="#realisations" class="hover:text-slate-400 transition text-pretty">Projets</a>
-    <a href="#events" class="hover:text-slate-400 transition">Concours</a>
+    <div class="relative group pb-2">
+      <a href="#pro" class="hover:text-blue-400 transition">Pro</a>
+      <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-72 rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl p-3 normal-case tracking-normal text-xs text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto hidden md:block z-50">
+        <a href="experiences/legrand-performance.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Charge de projet performance - Legrand</a>
+        <a href="experiences/legrand-developpeur.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Concepteur developpeur - Legrand</a>
+        <a href="experiences/medipole.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Charge de projet bio medicale - Medipole</a>
+      </div>
+    </div>
+    <div class="relative group pb-2">
+      <a href="#formation" class="hover:text-emerald-400 transition">Etudes</a>
+      <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-72 rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl p-3 normal-case tracking-normal text-xs text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto hidden md:block z-50">
+        <a href="education/3il-ingenieur.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Diplome d'ingenieur informatique - 3iL</a>
+        <a href="education/unilim-but.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">BUT Informatique - Universite de Limoges</a>
+        <a href="education/unilim-dut.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">DUT Informatique - Universite de Limoges</a>
+        <a href="education/lycee-turgot.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Baccalaureat general - Lycee Turgot</a>
+      </div>
+    </div>
+    <div class="relative group pb-2">
+      <a href="#asso" class="hover:text-purple-400 transition">Asso</a>
+      <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-80 rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl p-3 normal-case tracking-normal text-xs text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto hidden md:block z-50">
+        <a href="associations/bde-vice-president-candidat.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Candidat vice-president - BDE 3iL</a>
+        <a href="associations/lea-president.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">President - Fede LEA</a>
+        <a href="associations/oeil-conseiller.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Conseiller special - OEIL Informatique</a>
+        <a href="associations/oeil-president.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">President - OEIL Informatique</a>
+      </div>
+    </div>
+    <div class="relative group pb-2">
+      <a href="#citoyen" class="hover:text-rose-300 transition">Engagement</a>
+      <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-80 rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl p-3 normal-case tracking-normal text-xs text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto hidden md:block z-50">
+        <a href="engagement/3il-ca.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Representant etudiant (CA) - 3iL</a>
+        <a href="engagement/crj-conseiller.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Conseiller regional jeune - Nouvelle-Aquitaine</a>
+      </div>
+    </div>
+    <div class="relative group pb-2">
+      <a href="#realisations" class="hover:text-slate-400 transition text-pretty">Projets</a>
+      <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-80 rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl p-3 normal-case tracking-normal text-xs text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto hidden md:block z-50">
+        <a href="projects/solid.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Project Solid</a>
+        <a href="projects/portfolio.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Portfolio</a>
+        <a href="projects/index.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition text-slate-300">Tous les projets</a>
+      </div>
+    </div>
+    <div class="relative group pb-2">
+      <a href="#events" class="hover:text-slate-400 transition">Concours</a>
+      <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-80 rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl p-3 normal-case tracking-normal text-xs text-left opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto hidden md:block z-50">
+        <a href="projects/nuit2025.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Nuit de l'Info 2025</a>
+        <a href="projects/ggj2024.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Global Game Jam 2024</a>
+        <a href="projects/nuit2023.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Nuit de l'Info 2023</a>
+        <a href="projects/eloquence.html" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Eloquence 2023</a>
+      </div>
+    </div>
     <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
   </div>
 </nav>
@@ -99,7 +199,7 @@
           Actuellement en cycle ingénieur chez <span class="text-blue-400 font-bold">3iL</span>, mon parcours est une fusion entre informatique et engagement.
         </p>
         <p class="text-lg leading-relaxed opacity-60 italic">
-          De l'optimisation des procédés chez <span class="text-blue-300 font-bold">Legrand Groupe</span> au mandat de Conseiller Régional Jeune, je cultive une vision globale de l'innovation.
+          De l'optimisation des procédés chez <span class="text-blue-300 font-bold">Legrand Groupe</span> au mandat de Conseiller Régional Jeune, je cultive une vision globale de l'innovation. Plus bas, mes activités actuelles se dévoilent carte par carte.
         </p>
       </div>
       <div data-aos="fade-left">
@@ -108,23 +208,114 @@
     </div>
   </section>
 
-  <section class="pb-40 scroll-section" data-theme="theme-pro">
-    <div class="grid md:grid-cols-2 gap-16 items-center bg-white/5 p-12 rounded-[3rem] border border-white/10" data-aos="fade-up">
-      <div>
-        <h3 class="text-3xl font-black mb-6 uppercase tracking-tight italic">En ce moment.</h3>
-        <ul class="space-y-4 text-slate-300">
-          <li><span class="text-blue-400 font-bold">Legrand Groupe :</span> Chargé de projet informatique performance groupe.</li>
-          <li><span class="text-blue-400 font-bold">Région Nouvelle-Aquitaine :</span> Mandat de représentant citoyen au Conseil Régional Jeune.</li>
-          <li><span class="text-blue-400 font-bold">3iL Ingénieurs :</span> Étudiant en cycle ingénieur en apprentissage.</li>
-        </ul>
-      </div>
-      <div class="flex flex-col items-center">
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] mb-8 opacity-40 italic">Localisation : Limoges, FR</p>
-        <div class="relative w-full max-w-[200px] aspect-square flex items-center justify-center">
-          <svg viewBox="0 0 100 100" class="w-full h-full opacity-20 fill-none stroke-slate-400 stroke-[0.5]"><polygon points="50,1 93.3,25 93.3,75 50,99 6.7,75 6.7,25" /></svg>
-          <div class="pin"></div>
-          <div class="absolute mt-16 text-[10px] font-black text-blue-400 tracking-widest uppercase">Limoges</div>
+  <section id="actuel" class="py-40 scroll-section bio-reveal-section" data-theme="theme-pro">
+    <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-start min-h-[160vh]">
+      <div class="lg:sticky lg:top-28 self-start" data-aos="fade-right">
+        <p class="text-sm font-black uppercase tracking-[0.45em] text-blue-400 mb-4">En ce moment</p>
+        <h3 class="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tighter italic">Scroll pour déployer mes actualités.</h3>
+
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 max-w-xl">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-blue-500/15 border border-blue-400/20 flex items-center justify-center text-blue-400"><i class="fas fa-location-dot"></i></div>
+            <div>
+              <p class="text-[10px] uppercase tracking-[0.35em] opacity-50 font-black">Localisation</p>
+              <p class="text-xl font-black uppercase">Limoges, FR</p>
+            </div>
+          </div>
+          <p class="text-sm opacity-70 leading-relaxed">
+            Chaque carte s’ouvre dans l’ordre du scroll : Legrand, 3iL, BDE 3iL puis CRJ.
+          </p>
         </div>
+      </div>
+
+      <div class="space-y-5 lg:sticky lg:top-28 self-start" data-bio-reveal>
+        <a href="experiences/legrand-performance.html" data-bio-card class="card-glass bio-reveal-card block group border-blue-400/20 bg-blue-500/5 hover:border-blue-300/40">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="bio-reveal-kicker text-blue-400">Chargé de projet actuel</p>
+              <h4 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mt-2 group-hover:text-blue-300 transition">Legrand Groupe</h4>
+              <p class="text-blue-300 font-semibold italic mt-1">Performance / Audit logiciel</p>
+            </div>
+            <div class="text-right shrink-0">
+              <p class="text-[10px] font-black uppercase tracking-[0.35em] opacity-50">2025 - 2028</p>
+              <p class="text-xs opacity-50 mt-1">France</p>
+            </div>
+          </div>
+          <div class="bio-reveal-body">
+            <p class="mt-5 text-sm md:text-base leading-relaxed opacity-75">
+              J’optimise et pilote un portefeuille d’actifs logiciels avec une logique de performance, de gouvernance technique et d’amélioration continue.
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 text-blue-400 font-bold text-sm uppercase">
+              <span>Ouvrir la page</span><i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+
+        <a href="education/3il-ingenieur.html" data-bio-card class="card-glass bio-reveal-card block group border-emerald-400/20 bg-emerald-500/5 hover:border-emerald-300/40">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="bio-reveal-kicker text-emerald-400">Parcours académique</p>
+              <h4 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mt-2 group-hover:text-emerald-300 transition">Diplôme d'ingénieur 3iL</h4>
+              <p class="text-emerald-300 font-semibold italic mt-1">Génie logiciel & Management SI</p>
+            </div>
+            <div class="text-right shrink-0">
+              <p class="text-[10px] font-black uppercase tracking-[0.35em] opacity-50">2025 - 2028</p>
+              <p class="text-xs opacity-50 mt-1">Limoges</p>
+            </div>
+          </div>
+          <div class="bio-reveal-body">
+            <p class="mt-5 text-sm md:text-base leading-relaxed opacity-75">
+              J’y développe une vision plus large du logiciel : architecture, méthode, travail en équipe et projection vers les enjeux métier.
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 text-emerald-400 font-bold text-sm uppercase">
+              <span>Ouvrir la page</span><i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+
+        <a href="associations/bde-vice-president-candidat.html" data-bio-card class="card-glass bio-reveal-card block group border-purple-400/20 bg-purple-500/5 hover:border-purple-300/40">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="bio-reveal-kicker text-purple-400">Vie associative</p>
+              <h4 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mt-2 group-hover:text-purple-300 transition">Candidat Vice-Président BDE 3iL</h4>
+              <p class="text-purple-300 font-semibold italic mt-1">Bureau des Étudiants</p>
+            </div>
+            <div class="text-right shrink-0">
+              <p class="text-[10px] font-black uppercase tracking-[0.35em] opacity-50">2026 - 2027</p>
+              <p class="text-xs opacity-50 mt-1">Limoges</p>
+            </div>
+          </div>
+          <div class="bio-reveal-body">
+            <p class="mt-5 text-sm md:text-base leading-relaxed opacity-75">
+              Je m’implique dans la dynamique étudiante et l’organisation d’initiatives pour renforcer la vie du campus.
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 text-purple-400 font-bold text-sm uppercase">
+              <span>Ouvrir la page</span><i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+
+        <a href="engagement/crj-conseiller.html" data-bio-card class="card-glass bio-reveal-card block group border-rose-400/20 bg-rose-500/5 hover:border-rose-300/40">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="bio-reveal-kicker text-rose-400">Engagement citoyen</p>
+              <h4 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mt-2 group-hover:text-rose-200 transition">Conseiller Régional Jeune</h4>
+              <p class="text-rose-300 font-semibold italic mt-1">Région Nouvelle-Aquitaine</p>
+            </div>
+            <div class="text-right shrink-0">
+              <p class="text-[10px] font-black uppercase tracking-[0.35em] opacity-50">2024 - 2027</p>
+              <p class="text-xs opacity-50 mt-1">Bordeaux / Limoges</p>
+            </div>
+          </div>
+          <div class="bio-reveal-body">
+            <p class="mt-5 text-sm md:text-base leading-relaxed opacity-75">
+              Je participe à une instance régionale pour contribuer aux décisions publiques et porter la voix des jeunes.
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 text-rose-400 font-bold text-sm uppercase">
+              <span>Ouvrir la page</span><i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -133,200 +324,247 @@
     <h2 class="text-4xl font-black text-center mb-32 text-blue-400 uppercase tracking-widest" data-aos="fade-up">Expériences Professionnelles.</h2>
     <div class="timeline-line bg-blue-500"></div>
 
-    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
-      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-blue-400/30 italic">2025 - 2028</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-r-4 border-blue-500 text-right">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Chargé de projet informatique performance groupe</h3>
+    <a href="experiences/legrand-performance.html" class="timeline-item flex justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-blue-400/30 italic group-hover:text-blue-400/60 transition">2025 - 2028</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-blue-500 text-right group-hover:border-blue-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-blue-300 transition">Chargé de projet informatique performance groupe</h3>
         <p class="text-blue-400 font-semibold text-lg mb-2">Alternance | Legrand Groupe</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">France</p>
         <p class="text-sm opacity-70 mt-4 italic">Audit et délégation de portefeuille d'actif logiciel.</p>
+        <p class="text-sm text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
-      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-blue-400/30 italic">2024 - 2025</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-l-4 border-blue-500 text-left">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Concepteur développeur informatique industriel</h3>
+    <a href="experiences/legrand-developpeur.html" class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-blue-400/30 italic group-hover:text-blue-400/60 transition">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-blue-500 text-left group-hover:border-blue-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-blue-300 transition">Concepteur développeur informatique industriel</h3>
         <p class="text-blue-400 font-semibold text-lg mb-2">Alternance | Legrand France</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">France</p>
         <p class="text-sm opacity-70 mt-4 italic">Développement de solutions d'audit et de gestion de base documentaire.</p>
+        <p class="text-sm text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
-      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-blue-400/30 italic">2024</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-r-4 border-blue-500 text-right">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Chargé de projet informatique bio médicale</h3>
+    <a href="experiences/medipole.html" class="timeline-item flex justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-blue-400/30 italic group-hover:text-blue-400/60 transition">2024</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-blue-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-blue-500 text-right group-hover:border-blue-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-blue-300 transition">Chargé de projet informatique bio médicale</h3>
         <p class="text-blue-400 font-semibold text-lg mb-2">Stage | CSSR Médipole</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Nouvelle Calédonie</p>
         <p class="text-sm opacity-70 mt-4 italic">Analyse et gestion des dépendances informatiques hospitaliers.</p>
+        <p class="text-sm text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
   </section>
 
   <section id="formation" class="relative mb-60 scroll-section" data-theme="theme-formation">
     <h2 class="text-4xl font-black text-center mb-32 text-emerald-400 uppercase tracking-widest" data-aos="fade-up">Parcours Académique.</h2>
     <div class="timeline-line bg-emerald-500"></div>
 
-    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
-      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2025 - 2028</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-l-4 border-emerald-500 text-left">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Diplôme d'Ingénieur Informatique</h3>
+    <a href="education/3il-ingenieur.html" class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-emerald-400/30 italic group-hover:text-emerald-400/60 transition">2025 - 2028</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-emerald-500 text-left group-hover:border-emerald-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-emerald-300 transition">Diplôme d'Ingénieur Informatique</h3>
         <p class="text-emerald-400 font-semibold text-lg mb-2">Génie Logiciel & Management SI</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">3iL Ingénieurs, Limoges</p>
+        <p class="text-sm text-emerald-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
-      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2024 - 2025</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-r-4 border-emerald-500 text-right">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Bachelor Universitaire de Technologie</h3>
+    <a href="education/unilim-but.html" class="timeline-item flex justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-emerald-400/30 italic group-hover:text-emerald-400/60 transition">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-emerald-500 text-right group-hover:border-emerald-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-emerald-300 transition">Bachelor Universitaire de Technologie</h3>
         <p class="text-emerald-400 font-semibold text-lg mb-2">Informatique applicative</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Université de Limoges</p>
+        <p class="text-sm text-emerald-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
-      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2022 - 2024</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-l-4 border-emerald-500 text-left">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Diplôme Universitaire de Technologie</h3>
+    <a href="education/unilim-dut.html" class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-emerald-400/30 italic group-hover:text-emerald-400/60 transition">2022 - 2024</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-emerald-500 text-left group-hover:border-emerald-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-emerald-300 transition">Diplôme Universitaire de Technologie</h3>
         <p class="text-emerald-400 font-semibold text-lg mb-2">Informatique générale</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Université de Limoges</p>
+        <p class="text-sm text-emerald-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
-      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-emerald-400/30 italic">2019 - 2022</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-r-4 border-emerald-500 text-right">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Baccalauréat Général</h3>
+    <a href="education/lycee-turgot.html" class="timeline-item flex justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-emerald-400/30 italic group-hover:text-emerald-400/60 transition">2019 - 2022</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-emerald-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-emerald-500 text-right group-hover:border-emerald-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-emerald-300 transition">Baccalauréat Général</h3>
         <p class="text-emerald-400 font-semibold text-lg mb-2">Mathématiques & NSI</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Lycée Turgot, Limoges</p>
+        <p class="text-sm text-emerald-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
   </section>
 
   <section id="asso" class="relative mb-60 scroll-section" data-theme="theme-asso">
     <h2 class="text-4xl font-black text-center mb-32 text-purple-400 uppercase tracking-widest" data-aos="fade-up">Vie Associative.</h2>
     <div class="timeline-line bg-purple-500"></div>
 
-    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
-      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-purple-400/30 italic">2024 - 2025</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-l-4 border-purple-500 text-left">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Président</h3>
+    <a href="associations/bde-vice-president-candidat.html" class="timeline-item flex justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-purple-400/30 italic group-hover:text-purple-400/60 transition">2026 - 2027</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-purple-500 text-right group-hover:border-purple-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-purple-300 transition">Candidat Vice-Président</h3>
+        <p class="text-purple-400 font-semibold text-lg mb-2 italic">Bureau des Étudiants de 3iL</p>
+        <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+        <p class="text-sm text-purple-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
+      </div>
+    </a>
+
+    <a href="associations/lea-president.html" class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-purple-400/30 italic group-hover:text-purple-400/60 transition">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-purple-500 text-left group-hover:border-purple-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-purple-300 transition">Président</h3>
         <p class="text-purple-400 font-semibold text-lg mb-2 italic">Fédération des Associations Étudiantes du Limousin (LEA)</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+        <p class="text-sm text-purple-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
-      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-purple-400/30 italic">2024 - 2025</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-r-4 border-purple-500 text-right">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Conseiller Spécial</h3>
+    <a href="associations/oeil-conseiller.html" class="timeline-item flex justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-purple-400/30 italic group-hover:text-purple-400/60 transition">2024 - 2025</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-purple-500 text-right group-hover:border-purple-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-purple-300 transition">Conseiller Spécial</h3>
         <p class="text-purple-400 font-semibold text-lg mb-2 italic">OEIL Informatique</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+        <p class="text-sm text-purple-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
-      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-purple-400/30 italic">2023 - 2024</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-l-4 border-purple-500 text-left">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Président</h3>
+    <a href="associations/oeil-president.html" class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-purple-400/30 italic group-hover:text-purple-400/60 transition">2023 - 2024</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-purple-500 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-purple-500 text-left group-hover:border-purple-400 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-purple-300 transition">Président</h3>
         <p class="text-purple-400 font-semibold text-lg mb-2 italic">OEIL Informatique</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+        <p class="text-sm text-purple-400 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
   </section>
 
   <section id="citoyen" class="relative mb-60 scroll-section" data-theme="theme-citoyen">
-    <h2 class="text-4xl font-black text-center mb-32 text-red-400 uppercase tracking-widest" data-aos="fade-up">Engagement Citoyen.</h2>
-    <div class="timeline-line bg-red-500"></div>
+    <h2 class="text-4xl font-black text-center mb-32 text-rose-300 uppercase tracking-widest" data-aos="fade-up">Engagement Citoyen.</h2>
+    <div class="timeline-line bg-rose-400"></div>
 
-    <div class="timeline-item flex justify-between items-center w-full mb-24" data-aos="fade-right">
-      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-red-400/30 italic">2025 - 2028</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-red-500 rounded-full absolute left-1/2 -ml-2"></div>
-      <div class="timeline-content w-full md:w-5/12 border-r-4 border-red-500 text-right">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Représentant Étudiant (CA)</h3>
-        <p class="text-red-400 font-semibold text-lg mb-2 italic">3iL Ingénieurs</p>
+    <a href="engagement/3il-ca.html" class="timeline-item flex justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-12 hidden md:block font-black text-2xl text-rose-300/40 italic group-hover:text-rose-300/70 transition">2025 - 2028</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-rose-400 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-r-4 border-rose-400 text-right group-hover:border-rose-300 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-rose-200 transition">Représentant Étudiant (CA)</h3>
+        <p class="text-rose-300 font-semibold text-lg mb-2 italic">3iL Ingénieurs</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Limoges</p>
+        <p class="text-sm text-rose-300 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
 
-    <div class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24" data-aos="fade-left">
-      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-red-400/30 italic">2024 - 2027</div>
-      <div class="timeline-dot z-10 w-4 h-4 bg-red-500 rounded-full absolute left-1/2 -ml-2 shadow-[0_0_20px_rgba(239,68,68,0.5)]"></div>
-      <div class="timeline-content w-full md:w-6/12 border-l-8 border-red-600 bg-red-600/10 text-left">
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter">Conseiller Régional Jeune</h3>
-        <p class="text-red-400 font-semibold text-lg mb-2 italic">Région Nouvelle-Aquitaine</p>
+    <a href="engagement/crj-conseiller.html" class="timeline-item flex flex-row-reverse justify-between items-center w-full mb-24 cursor-pointer group hover:shadow-lg transition-all" data-aos="fade-left">
+      <div class="w-5/12 text-left pl-12 hidden md:block font-black text-2xl text-rose-300/40 italic group-hover:text-rose-300/70 transition">2024 - 2027</div>
+      <div class="timeline-dot z-10 w-4 h-4 bg-rose-400 rounded-full absolute left-1/2 -ml-2 group-hover:scale-150 transition"></div>
+      <div class="timeline-content w-full md:w-5/12 border-l-4 border-rose-400 text-left group-hover:border-rose-300 transition">
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tighter group-hover:text-rose-200 transition">Conseiller Régional Jeune</h3>
+        <p class="text-rose-300 font-semibold text-lg mb-2 italic">Région Nouvelle-Aquitaine</p>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 italic">Bordeaux / Limoges</p>
+        <p class="text-sm text-rose-300 mt-2 opacity-0 group-hover:opacity-100 transition font-bold">➜ Lire plus</p>
       </div>
-    </div>
+    </a>
   </section>
 
   <section id="realisations" class="py-40 scroll-section" data-theme="theme-events">
     <h2 class="text-5xl font-black text-center mb-24 uppercase italic tracking-tighter">Réalisations.</h2>
     <div class="grid md:grid-cols-2 gap-12">
-      <div class="card-glass h-full" data-aos="fade-up">
-        <h3 class="text-3xl font-black mb-2 text-blue-400 uppercase tracking-tighter">Project Solid</h3>
+      <a href="projects/solid.html" class="card-glass h-full cursor-pointer group hover:shadow-2xl transition-all duration-300" data-aos="fade-up">
+        <h3 class="text-3xl font-black mb-2 text-blue-400 uppercase tracking-tighter group-hover:text-blue-300 transition">Project Solid</h3>
         <p class="text-lg font-semibold mb-4 italic opacity-80">Jeu vidéo 3D - Unity / C#</p>
-        <p class="opacity-70 leading-relaxed italic">Exploration interactive de l'histoire de l'informatique à travers la science-fiction et des énigmes complexes.</p>
-      </div>
-      <div class="card-glass h-full" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-3xl font-black mb-2 text-emerald-400 uppercase tracking-tighter">Portfolio</h3>
+        <p class="opacity-70 leading-relaxed italic group-hover:opacity-100 transition">Exploration interactive de l'histoire de l'informatique à travers la science-fiction et des énigmes complexes.</p>
+        <div class="mt-6 pt-4 border-t border-blue-500/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center gap-2 text-blue-400">
+          <span class="text-sm font-bold uppercase">Découvrir</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </a>
+      <a href="projects/portfolio.html" class="card-glass h-full cursor-pointer group hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-3xl font-black mb-2 text-emerald-400 uppercase tracking-tighter group-hover:text-emerald-300 transition">Portfolio</h3>
         <p class="text-lg font-semibold mb-4 italic opacity-80">Storytelling Digital - HTML/Tailwind/JS</p>
-        <p class="opacity-70 leading-relaxed italic">Conception d'une interface immersive pilotée par les événements, utilisant Intersection Observer pour une expérience utilisateur fluide.</p>
-      </div>
+        <p class="opacity-70 leading-relaxed italic group-hover:opacity-100 transition">Conception d'une interface immersive pilotée par les événements, utilisant Intersection Observer pour une expérience utilisateur fluide.</p>
+        <div class="mt-6 pt-4 border-t border-emerald-500/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center gap-2 text-emerald-400">
+          <span class="text-sm font-bold uppercase">Découvrir</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </a>
     </div>
   </section>
 
   <section id="events" class="py-40 scroll-section" data-theme="theme-events">
     <h2 class="text-4xl font-black text-center mb-24 uppercase tracking-widest">Concours.</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="card-glass flex flex-col" data-aos="zoom-in">
-        <h4 class="text-xl font-black text-purple-400 mb-1 uppercase tracking-tighter">Nuit de l'Info</h4>
+      <a href="projects/nuit2025.html" class="card-glass flex flex-col cursor-pointer group hover:shadow-2xl transition-all duration-300" data-aos="zoom-in">
+        <h4 class="text-xl font-black text-purple-400 mb-1 uppercase tracking-tighter group-hover:text-purple-300 transition">Nuit de l'Info</h4>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">DÉCEMBRE 2025</p>
         <p class="text-sm opacity-70 italic mb-6 flex-grow">Chef d'équipe - Développement web intensif en 24h.</p>
         <div class="pt-4 border-t border-white/10">
           <p class="text-[10px] font-black uppercase text-purple-300">Résultat</p>
           <p class="font-bold text-sm uppercase">Non classé</p>
         </div>
-      </div>
-      <div class="card-glass flex flex-col" data-aos="zoom-in" data-aos-delay="100">
-        <h4 class="text-xl font-black text-blue-400 mb-1 uppercase tracking-tighter">Global Game Jam</h4>
+        <div class="mt-4 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center gap-2 text-purple-400 text-sm font-bold">
+          <span>En savoir plus</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </a>
+      <a href="projects/ggj2024.html" class="card-glass flex flex-col cursor-pointer group hover:shadow-2xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+        <h4 class="text-xl font-black text-blue-400 mb-1 uppercase tracking-tighter group-hover:text-blue-300 transition">Global Game Jam</h4>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">JANVIER 2024</p>
         <p class="text-sm opacity-70 italic mb-6 flex-grow">Développeur - Création de jeu vidéo original en 48h.</p>
         <div class="pt-4 border-t border-white/10">
           <p class="text-[10px] font-black uppercase text-blue-300">Résultat</p>
           <p class="font-bold text-sm uppercase">2nde Place</p>
         </div>
-      </div>
-      <div class="card-glass flex flex-col" data-aos="zoom-in" data-aos-delay="200">
-        <h4 class="text-xl font-black text-emerald-400 mb-1 uppercase tracking-tighter">Nuit de l'Info</h4>
+        <div class="mt-4 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center gap-2 text-blue-400 text-sm font-bold">
+          <span>En savoir plus</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </a>
+      <a href="projects/nuit2023.html" class="card-glass flex flex-col cursor-pointer group hover:shadow-2xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+        <h4 class="text-xl font-black text-emerald-400 mb-1 uppercase tracking-tighter group-hover:text-emerald-300 transition">Nuit de l'Info</h4>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">DÉCEMBRE 2023</p>
         <p class="text-sm opacity-70 italic mb-6 flex-grow">Développeur - Challenge technique national.</p>
         <div class="pt-4 border-t border-white/10">
           <p class="text-[10px] font-black uppercase text-emerald-300">Résultat</p>
           <p class="font-bold text-sm uppercase">Non classé</p>
         </div>
-      </div>
-      <div class="card-glass flex flex-col" data-aos="zoom-in" data-aos-delay="300">
-        <h4 class="text-xl font-black text-red-400 mb-1 uppercase tracking-tighter">Éloquence</h4>
+        <div class="mt-4 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center gap-2 text-emerald-400 text-sm font-bold">
+          <span>En savoir plus</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </a>
+      <a href="projects/eloquence.html" class="card-glass flex flex-col cursor-pointer group hover:shadow-2xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+        <h4 class="text-xl font-black text-red-400 mb-1 uppercase tracking-tighter group-hover:text-red-300 transition">Éloquence</h4>
         <p class="text-sm font-bold uppercase tracking-widest opacity-50 mb-4">MARS 2023</p>
         <p class="text-sm opacity-70 italic mb-6 flex-grow">Participant - Joute verbale et rhétorique devant jury.</p>
         <div class="pt-4 border-t border-white/10">
           <p class="text-[10px] font-black uppercase text-red-300">Résultat</p>
           <p class="font-bold text-sm uppercase">2nde Place</p>
         </div>
-      </div>
+        <div class="mt-4 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center gap-2 text-red-400 text-sm font-bold">
+          <span>En savoir plus</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -335,17 +573,40 @@
     <div class="grid md:grid-cols-3 gap-8">
       <a href="https://www.linkedin.com/in/logan-ferreira/" target="_blank" class="card-glass text-center group"><i class="fab fa-linkedin text-5xl mb-6 text-blue-400 transition group-hover:scale-110"></i><h4 class="text-2xl font-black uppercase">LinkedIn</h4></a>
       <a href="https://github.com/LoganFerreira" target="_blank" class="card-glass text-center group"><i class="fab fa-github text-5xl mb-6 text-slate-100 transition group-hover:scale-110"></i><h4 class="text-2xl font-black uppercase">GitHub</h4></a>
-      <a href="https://logan-ferreira.com/" target="_blank" class="card-glass text-center group"><i class="fas fa-globe text-5xl mb-6 text-emerald-400 transition group-hover:scale-110"></i><h4 class="text-2xl font-black uppercase">Site Web</h4></a>
+      <a href="mailto:logan.ferreira87100@gmail.com" class="card-glass text-center group"><i class="fas fa-envelope text-5xl mb-6 text-orange-400 transition group-hover:scale-110"></i><h4 class="text-2xl font-black uppercase">Email</h4></a>
     </div>
   </section>
 
 </main>
 
-<footer class="py-16 text-center opacity-20 border-t border-white/5 uppercase font-bold text-[10px] tracking-[0.5em]">Limoges &bull; Logan Ferreira &bull; 2026</footer>
+<footer class="py-16 text-center opacity-20 border-t border-white/5 uppercase font-bold text-[10px] tracking-[0.5em]">
+  <div>Limoges &bull; Logan Ferreira &bull; 2026</div>
+  <a href="mentions-legales.html" class="inline-block mt-4 tracking-normal normal-case text-xs text-slate-300 hover:text-white transition">Mentions légales</a>
+</footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({ duration: 1000, once: false });
+
+  const bioRevealSection = document.querySelector('#actuel');
+  const bioRevealCards = bioRevealSection ? bioRevealSection.querySelectorAll('[data-bio-card]') : [];
+
+  const updateBioReveal = () => {
+    if (!bioRevealSection || !bioRevealCards.length) return;
+
+    const sectionStart = bioRevealSection.offsetTop - window.innerHeight * 0.55;
+    const sectionEnd = bioRevealSection.offsetTop + bioRevealSection.offsetHeight - window.innerHeight * 0.8;
+    const progress = Math.min(1, Math.max(0, (window.scrollY - sectionStart) / Math.max(1, sectionEnd - sectionStart)));
+
+    bioRevealCards.forEach((card, index) => {
+      const threshold = 0.02 + (index * 0.18);
+      card.classList.toggle('is-open', progress >= threshold);
+    });
+  };
+
+  window.addEventListener('scroll', updateBioReveal, { passive: true });
+  window.addEventListener('resize', updateBioReveal);
+  updateBioReveal();
 
   const sections = document.querySelectorAll('.scroll-section');
   const observer = new IntersectionObserver((entries) => {

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Digital | Logan FERREIRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap');
+	body { font-family: 'Inter', sans-serif; }
+	.card-glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 2rem; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+
+<nav class="sticky top-0 z-50 backdrop-blur-lg border-b border-white/10 py-4 shadow-2xl">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+	<a href="index.html" class="text-emerald-300 font-black text-lg hover:text-emerald-100 transition">
+	  <i class="fas fa-arrow-left mr-2"></i>Tous les projets
+	</a>
+	<a href="../index.html#realisations" class="text-slate-300 font-black text-sm uppercase hover:text-white transition">Retour au portfolio</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4 py-20">
+  <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+	<div>
+	  <p class="text-sm font-black uppercase tracking-[0.4em] text-emerald-400 mb-4">Projet personnel</p>
+	  <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase leading-none">Portfolio Digital</h1>
+	  <p class="text-xl opacity-75 leading-relaxed mb-8">
+		Un site immersif pensé comme une narration visuelle de mon parcours, avec des sections dynamiques, un thème adaptatif et des cartes interactives.
+	  </p>
+	  <div class="flex flex-wrap gap-3">
+		<span class="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 text-sm font-bold">HTML</span>
+		<span class="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 text-sm font-bold">Tailwind CSS</span>
+		<span class="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 text-sm font-bold">JavaScript</span>
+		<span class="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 text-sm font-bold">AOS</span>
+	  </div>
+	</div>
+
+	<div class="card-glass">
+	  <div class="aspect-video rounded-3xl bg-gradient-to-br from-emerald-500/20 via-slate-900 to-blue-500/20 border border-white/10 flex items-center justify-center text-center p-8">
+		<div>
+		  <p class="text-sm uppercase tracking-[0.4em] text-emerald-300 mb-3 font-black">Interface immersive</p>
+		  <h2 class="text-3xl md:text-4xl font-black uppercase mb-3">Une vitrine vivante</h2>
+		  <p class="opacity-70 max-w-md mx-auto">Navigation par sections, cartes détaillées, menus déroulants et animations subtiles pour rendre le CV plus lisible et plus mémorable.</p>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <section class="grid md:grid-cols-2 gap-8 mb-16">
+	<div class="card-glass">
+	  <h2 class="text-2xl font-black mb-4 uppercase text-emerald-300">Objectifs</h2>
+	  <ul class="space-y-3 opacity-75">
+		<li>• Donner accès rapide aux expériences, études et engagements.</li>
+		<li>• Présenter un parcours sous forme de narration visuelle.</li>
+		<li>• Mettre en avant les liens directs vers les pages détaillées.</li>
+		<li>• Garder une interface sobre, élégante et responsive.</li>
+	  </ul>
+	</div>
+
+	<div class="card-glass">
+	  <h2 class="text-2xl font-black mb-4 uppercase text-blue-300">Fonctionnalités</h2>
+	  <ul class="space-y-3 opacity-75">
+		<li>• Thèmes dynamiques par section.</li>
+		<li>• Cartes animées et menus déroulants.</li>
+		<li>• Défilement fluide et ancres de navigation.</li>
+		<li>• Sélection Light / Dark au chargement.</li>
+	  </ul>
+	</div>
+  </section>
+
+  <section class="card-glass">
+	<h2 class="text-2xl font-black mb-4 uppercase text-rose-300">À retenir</h2>
+	<p class="opacity-75 leading-relaxed">
+	  Ce portfolio a été conçu pour être à la fois un CV en ligne et une base extensible pour présenter plus en détail chaque expérience, projet et engagement.
+	</p>
+  </section>
+</main>
+
+<footer class="py-16 text-center opacity-20 border-t border-white/5 uppercase font-bold text-[10px] mt-20">Limoges &bull; Logan Ferreira &bull; 2026</footer>
+
+</body>
+</html>
+

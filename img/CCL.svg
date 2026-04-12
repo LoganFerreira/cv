@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg" version="1.1"
+     width="360.0" height="185.0">
+    <!-- Created with parliamentarch (https://github.com/Gouvernathor/parliamentarch/) -->
+    <text x="180.0" y="175.0"
+          style="font-size:36px;font-weight:bold;text-align:center;text-anchor:middle;font-family:sans-serif">26</text>
+    <g style="fill:#c084fc"
+       id="0-Liste-Logan-FERREIRA">
+        <title>Liste Logan FERREIRA</title>
+        <circle cx="23.48" cy="162.50" r="14.00"/>
+        <circle cx="58.76" cy="162.50" r="14.00"/>
+        <circle cx="94.27" cy="162.50" r="14.00"/>
+        <circle cx="33.54" cy="122.06" r="14.00"/>
+        <circle cx="75.64" cy="115.85" r="14.00"/>
+        <circle cx="53.86" cy="85.68" r="14.00"/>
+        <circle cx="115.93" cy="120.41" r="14.00"/>
+        <circle cx="83.01" cy="55.90" r="14.00"/>
+        <circle cx="109.65" cy="79.72" r="14.00"/>
+        <circle cx="118.95" cy="34.81" r="14.00"/>
+        <circle cx="156.33" cy="95.76" r="14.00"/>
+        <circle cx="155.19" cy="60.04" r="14.00"/>
+        <circle cx="159.16" cy="23.88" r="14.00"/>
+    </g>
+    <g style="fill:#1d984c"
+       id="1-Party-2">
+        <title>Party 2</title>
+        <circle cx="200.84" cy="23.88" r="14.00"/>
+        <circle cx="204.81" cy="60.04" r="14.00"/>
+        <circle cx="203.67" cy="95.76" r="14.00"/>
+        <circle cx="241.05" cy="34.81" r="14.00"/>
+    </g>
+    <g style="fill:#cbbc15"
+       id="2-Party-3">
+        <title>Party 3</title>
+        <circle cx="250.35" cy="79.72" r="14.00"/>
+        <circle cx="276.99" cy="55.90" r="14.00"/>
+        <circle cx="244.07" cy="120.41" r="14.00"/>
+        <circle cx="306.14" cy="85.68" r="14.00"/>
+    </g>
+    <g style="fill:#fb2626"
+       id="3-Party-4">
+        <title>Party 4</title>
+        <circle cx="284.36" cy="115.85" r="14.00"/>
+        <circle cx="326.46" cy="122.06" r="14.00"/>
+        <circle cx="265.73" cy="162.50" r="14.00"/>
+    </g>
+    <g style="fill:#dd85b0"
+       id="4-Party-5">
+        <title>Party 5</title>
+        <circle cx="301.24" cy="162.50" r="14.00"/>
+    </g>
+    <g style="fill:#000000"
+       id="5-Party-6">
+        <title>Party 6</title>
+        <circle cx="336.52" cy="162.50" r="14.00"/>
+    </g>
+</svg>
+

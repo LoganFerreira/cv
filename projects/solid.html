@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Solid | Logan FERREIRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap');
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+
+<nav class="sticky top-0 z-50 backdrop-blur-lg border-b border-white/10 py-4 shadow-2xl">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+    <a href="../index.html" class="text-blue-400 font-black text-lg hover:text-blue-300 transition">
+      <i class="fas fa-arrow-left mr-2"></i>Portfolio
+    </a>
+    <div class="flex gap-6 text-sm font-black uppercase tracking-widest">
+      <a href="../index.html#realisations" class="hover:text-blue-400 transition">Réalisations</a>
+      <a href="../index.html#events" class="hover:text-slate-400 transition">Concours</a>
+      <a href="../index.html#contact" class="hover:text-blue-400 transition">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-4xl mx-auto px-4 py-20">
+  <div class="mb-16">
+    <h1 class="text-6xl font-black mb-4 text-blue-400 uppercase tracking-tighter">Project Solid</h1>
+    <p class="text-2xl text-blue-300 font-light italic">Jeu vidéo 3D immersif</p>
+    <p class="text-lg opacity-70 mt-2">Unity • C# • Conception narrative</p>
+  </div>
+
+  <div class="card-glass mb-12">
+    <h2 class="text-3xl font-black mb-6 text-blue-400 uppercase">Vue d'ensemble</h2>
+    <p class="text-lg leading-relaxed opacity-80 mb-4">
+      Project Solid est une expérience interactive immersive qui explore l'histoire de l'informatique à travers la science-fiction.
+      Le joueur navigue dans un univers futuriste riche en énigmes complexes et en découvertes historiques.
+    </p>
+    <p class="text-lg leading-relaxed opacity-80">
+      Ce projet représente une fusion entre éducation et divertissement, offrant une perspective unique sur l'évolution technologique.
+    </p>
+  </div>
+
+  <div class="card-glass mb-12">
+    <h2 class="text-3xl font-black mb-6 text-emerald-400 uppercase">Technologies utilisées</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white/5 p-4 rounded-lg border border-white/10">
+        <p class="font-bold text-blue-300 mb-2">🎮 Engine</p>
+        <p class="opacity-70">Unity (dernière version stable)</p>
+      </div>
+      <div class="bg-white/5 p-4 rounded-lg border border-white/10">
+        <p class="font-bold text-blue-300 mb-2">💻 Programmation</p>
+        <p class="opacity-70">C# avec patterns de conception avancés</p>
+      </div>
+      <div class="bg-white/5 p-4 rounded-lg border border-white/10">
+        <p class="font-bold text-blue-300 mb-2">🎨 Graphisme</p>
+        <p class="opacity-70">Rendu 3D temps réel, shaders custom</p>
+      </div>
+      <div class="bg-white/5 p-4 rounded-lg border border-white/10">
+        <p class="font-bold text-blue-300 mb-2">🔊 Audio</p>
+        <p class="opacity-70">Design sonore immersif et musique adaptive</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-glass mb-12">
+    <h2 class="text-3xl font-black mb-6 text-purple-400 uppercase">Fonctionnalités principales</h2>
+    <ul class="space-y-4">
+      <li class="flex gap-4">
+        <span class="text-blue-400 font-black">➤</span>
+        <div>
+          <p class="font-bold mb-1">Exploration interactive</p>
+          <p class="opacity-70">Monde 3D détaillé avec zones secrètes à découvrir</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="text-blue-400 font-black">➤</span>
+        <div>
+          <p class="font-bold mb-1">Système d'énigmes</p>
+          <p class="opacity-70">Puzzles complexes intégrant l'histoire de l'informatique</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="text-blue-400 font-black">➤</span>
+        <div>
+          <p class="font-bold mb-1">Narration dynamique</p>
+          <p class="opacity-70">Scénario adaptatif basé sur les choix du joueur</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="text-blue-400 font-black">➤</span>
+        <div>
+          <p class="font-bold mb-1">Système de progression</p>
+          <p class="opacity-70">Déblocage de zones et d'énigmes au fur et à mesure</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card-glass mb-12">
+    <h2 class="text-3xl font-black mb-6 text-red-400 uppercase">Défis et apprentissages</h2>
+    <div class="space-y-4">
+      <div class="bg-red-600/10 border-l-4 border-red-500 p-4 rounded">
+        <p class="font-bold text-red-300 mb-2">Optimisation 3D</p>
+        <p class="opacity-70">Gestion des performances pour un monde complexe et détaillé</p>
+      </div>
+      <div class="bg-emerald-600/10 border-l-4 border-emerald-500 p-4 rounded">
+        <p class="font-bold text-emerald-300 mb-2">Game Design</p>
+        <p class="opacity-70">Création d'une courbe de difficulté progressive et équilibrée</p>
+      </div>
+      <div class="bg-purple-600/10 border-l-4 border-purple-500 p-4 rounded">
+        <p class="font-bold text-purple-300 mb-2">Narration interactive</p>
+        <p class="opacity-70">Architecture narrative permettant les choix du joueur</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-glass">
+    <h2 class="text-3xl font-black mb-6 text-slate-300 uppercase">Accès au projet</h2>
+    <p class="opacity-70 mb-6">Le projet est actuellement en développement. Vous pouvez consulter le code source et les assets sur les liens suivants :</p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-bold transition">
+        <i class="fab fa-github mr-2"></i>GitHub
+      </a>
+      <a href="#" class="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-bold transition">
+        <i class="fab fa-unity mr-2"></i>Asset Store
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer class="py-16 text-center opacity-20 border-t border-white/5 uppercase font-bold text-[10px] tracking-[0.5em]">Limoges &bull; Logan Ferreira &bull; 2026</footer>
+
+</body>
+</html>
+
+
