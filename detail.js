@@ -24,8 +24,8 @@
       accent: '#c084fc',
       page: 'parcours-associatif.html',
       entries: [
-        ['bde-vice-president-candidat.html', '2026 - 2027', 'Vice-Président BDE'],
-        ['oeil-president-candidat.html', '2026 - 2027', 'Président OEIL'],
+        ['bde-vice-president.html', '2026 - 2027', 'Vice-Président BDE'],
+        ['oeil-president-2026.html', '2026 - 2027', 'Président OEIL'],
         ['lea-president.html', '2024 - 2025', 'Président LEA'],
         ['oeil-conseiller.html', '2024 - 2025', 'Conseiller spécial'],
         ['oeil-president.html', '2023 - 2024', 'Président OEIL']
@@ -36,7 +36,7 @@
       page: 'parcours-citoyen.html',
       entries: [
         ['3il-ca.html', '2025 - 2028', 'Représentant étudiant'],
-        ['crj-conseiller.html', '2024 - 2027', 'Conseiller régional jeune']
+        ['crj-conseiller.html', '2024 - 2026', 'Conseiller régional jeune']
       ]
     },
     projects: {
