@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/associations/oeil-president-candidat.html", "destination": "/associations/oeil-president-2026.html", "permanent": true },
+    { "source": "/associations/bde-vice-president-candidat.html", "destination": "/associations/bde-vice-president.html", "permanent": true }
+  ]
+}
