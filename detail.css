@@ -139,3 +139,35 @@
 }
 .detail-page .logo-panel [class*="text-"] { color: var(--clair); }
 .detail-page .logo-panel :is([class*="text-blue-"], [class*="text-emerald-"], [class*="text-purple-"], [class*="text-rose-"], [class*="text-red-"]) { color: color-mix(in srgb, var(--accent) 30%, #ffffff); }
+
+/* ---------- Identité des organisations ----------
+   Sur la page d'une école ou d'une association, ses couleurs remplacent celles de la rubrique. */
+[data-org="3il"] { --accent: #0c566c; --accent-ink: #0c566c; --org-2: #e4500e; }
+[data-org="bde"] { --accent: #0a1630; --accent-ink: #7a5c12; --org-2: #b8952f; }
+[data-org="oeil"] { --accent: #111111; --accent-ink: #111111; --org-2: #111111; }
+[data-org="lea"] { --accent: #ef7914; --on-accent: var(--encre); --accent-ink: #a34b08; --org-2: #ef7914; }
+[data-org="ul"] { --accent: #b41a1f; --accent-ink: #a8121b; --org-2: #3c4854; }
+[data-org="crj"] { --accent: #c00c30; --accent-ink: #b00a2c; --org-2: #111111; }
+[data-org="turgot"] { --accent: #0c9c9c; --on-accent: var(--encre); --accent-ink: #087373; --org-2: #0c9c9c; }
+[data-org="legrand"] { --accent: #e30613; --accent-ink: #c00a16; --org-2: #111111; }
+[data-org="cssr"] { --accent: #4a3424; --accent-ink: #4a3424; --org-2: #d9a62a; }
+
+/* En-tête des pages d'organisation : titre à gauche, logo à droite */
+.org-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem 2.5rem; margin-bottom: 4rem; }
+.org-head-text > :last-child { margin-bottom: 0; }
+/* Titre plus compact à côté du logo, coupé proprement si un mot reste trop long */
+.detail-page .org-head h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); hyphens: auto; overflow-wrap: break-word; }
+.org-logo {
+  margin: 0;
+  padding: 1rem;
+  border: 2px solid var(--encre);
+  background: #ffffff;
+  box-shadow: 6px 6px 0 var(--org-2, var(--accent));
+}
+.org-logo img { display: block; width: auto; max-width: min(280px, 34vw); max-height: 150px; }
+.org-logo--plein { padding: 0; }
+@media (max-width: 640px) {
+  .org-head { grid-template-columns: minmax(0, 1fr); margin-bottom: 3rem; }
+  .org-logo { order: -1; justify-self: start; }
+  .org-logo img { max-width: 70vw; max-height: 100px; }
+}
