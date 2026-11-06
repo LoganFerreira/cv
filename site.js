@@ -64,10 +64,12 @@
       </div>`;
     document.body.append(footer);
 
-    // Une étape est "en cours" tant que son année de fin n'est pas dépassée.
-    const year = new Date().getFullYear();
+    // Une étape est "en cours" jusqu'à l'été de son année de fin (fin d'année scolaire ou de mandat).
+    const now = new Date();
+    const year = now.getFullYear();
     document.querySelectorAll('.timeline-entry[data-end]').forEach(entry => {
-      if (Number(entry.dataset.end) < year) return;
+      const end = Number(entry.dataset.end);
+      if (end < year || (end === year && now.getMonth() >= 6)) return;
       entry.classList.add('is-current');
       const badge = document.createElement('span');
       badge.className = 'timeline-badge';
